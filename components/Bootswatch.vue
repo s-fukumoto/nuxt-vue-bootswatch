@@ -9,20 +9,12 @@
 </template>
 
 <script>
-import axios from 'axios'
-
-const API_BOOTSWATCH = 'https://bootswatch.com/api/3.json'
-
 export default {
-  async created () {
-    let { data } = await axios.get(API_BOOTSWATCH)
-    return { themes: data.themes }
-  },
   data () {
     return {
-      selected_item: '',
-      themes: []
+      selected_item: ''
     }
-  }
+  },
+  props: ['themes']
 }
 </script>

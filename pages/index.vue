@@ -5,14 +5,22 @@
       <h4>Alert!</h4>
       <p>This is a demo of the Bootswatch API.</p>
     </div>
-    <bootswatch/>
+    <bootswatch :themes="themes"/>
   </section>
 </template>
 
 <script>
 import bootswatch from '~/components/Bootswatch.vue'
 
+import axios from 'axios'
+
+const API_BOOTSWATCH = 'https://bootswatch.com/api/3.json'
+
 export default {
+  async asyncData () {
+    let { data } = await axios.get(API_BOOTSWATCH)
+    return { themes: data.themes }
+  },
   head: {
     title: 'Bootswatch API Demo',
     meta: [
