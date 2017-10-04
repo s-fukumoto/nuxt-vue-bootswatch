@@ -1,6 +1,6 @@
 <template>
   <div>
-    <select v-model="selected_item">
+    <select class="form-control" v-model="selected_item" @change="changed">
       <option v-for="theme in themes" :value="theme.name">
         {{ theme.name }}
       </option>
@@ -15,6 +15,11 @@ export default {
       selected_item: ''
     }
   },
-  props: ['themes']
+  props: ['themes'],
+  methods: {
+    changed: function (e) {
+      this.$emit('changed', this.selected_item)
+    }
+  }
 }
 </script>

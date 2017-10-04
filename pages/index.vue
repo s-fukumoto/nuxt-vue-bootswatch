@@ -5,21 +5,26 @@
       <h4>Alert!</h4>
       <p>This is a demo of the Bootswatch API.</p>
     </div>
-    <bootswatch :themes="themes"/>
+    <bootswatch :themes="themes" @changed="changebootswatch"/>
   </section>
 </template>
 
 <script>
 import bootswatch from '~/components/Bootswatch.vue'
-
 import axios from 'axios'
 
 const API_BOOTSWATCH = 'https://bootswatch.com/api/3.json'
+const DEF_BOOTSWATCH = 'https://maxcdn.bootstrapcdn.com/bootswatch/latest/cerulean/bootstrap.min.css'
 
 export default {
   async asyncData () {
     let { data } = await axios.get(API_BOOTSWATCH)
     return { themes: data.themes }
+  },
+  data () {
+    return {
+      style_href: DEF_BOOTSWATCH
+    }
   },
   head: {
     title: 'Bootswatch API Demo',
@@ -27,7 +32,7 @@ export default {
       { charset: 'utf-8' }
     ],
     link: [
-      { rel: 'stylesheet', href: '//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css' }
+      { rel: 'stylesheet', href: DEF_BOOTSWATCH }
     ],
     script: [
       { src: 'http://code.jquery.com/jquery-2.1.0.min.js' }
@@ -35,6 +40,17 @@ export default {
   },
   components: {
     bootswatch
+  },
+  methods: {
+    changebootswatch: function (selectedItem) {
+      for (let theme of this.themes) {
+        if (theme.name === selectedItem) {
+          this.style_href = theme.cssMin
+          console.log(this.style_href)
+          break
+        }
+      }
+    }
   }
 }
 </script>
