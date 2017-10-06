@@ -3,8 +3,8 @@
 -->
 
 <template>
-  <expall/>
-<!--
+
+<div class="container">
   <expnavbar/>
   <expbuttons/>
   <exptypography/>
@@ -15,11 +15,11 @@
   <expprogressbars/>
   <expcontainers/>
   <expdialogs/>
--->
+</div>
+
 </template>
 
 <script>
-import expall from '~/components/examples/All.vue'
 import expnavbar from '~/components/examples/Navbar.vue'
 import expbuttons from '~/components/examples/Buttons.vue'
 import exptypography from '~/components/examples/Typography.vue'
@@ -33,7 +33,6 @@ import expdialogs from '~/components/examples/Dialogs.vue'
 
 export default {
   components: {
-    expall,
     expnavbar,
     expbuttons,
     exptypography,
