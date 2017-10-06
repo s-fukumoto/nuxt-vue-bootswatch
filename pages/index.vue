@@ -18,6 +18,7 @@ import headerbootswatch from '~/components/HeaderBootswatch.vue'
 import bootswatch from '~/components/Bootswatch.vue'
 import bootstrapexamples from '~/components/Examples.vue'
 import axios from 'axios'
+import $ from 'jquery'
 
 const META_TITLE = 'Bootswatch Theme Changer'
 const API_BOOTSWATCH = 'https://bootswatch.com/api/3.json'
@@ -52,7 +53,8 @@ export default {
       for (let theme of this.themes) {
         if (theme.name === selectedItem) {
           // スタイル置き換え
-          document.getElementById('style-bootswatch').href = theme.cssCdn
+          // document.getElementById('style-bootswatch').href = theme.cssCdn
+          $('#style-bootswatch').attr('href', theme.cssCdn)
           break
         }
       }

@@ -1,3 +1,5 @@
+const webpack = require('webpack')
+
 module.exports = {
   /*
   ** Headers of the page
@@ -21,7 +23,23 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    vendor: ['axios'],
+    /*
+    ** 追加分
+    */
+    vendor: ['axios', 'jquery', 'bootstrap', 'bootstrap-vue'],
+    plugins: [
+      // set shortcuts as global for bootstrap
+      new webpack.ProvidePlugin({
+        $: 'jquery',
+        jQuery: 'jquery',
+        'window.jQuery': 'jquery'
+      })
+    ],
+    modules: [
+      // bootstrap
+      ['@nuxtjs/bootstrap-vue']
+      // ['@nuxtjs/bootstrap-vue', { css: false }]
+    ],
     /*
     ** Run ESLint on save
     */
