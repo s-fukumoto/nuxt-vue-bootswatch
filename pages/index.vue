@@ -1,10 +1,10 @@
 <template>
   <section class="container">
-    <headerbootswatch
+    <bwheadernavbar
       :themes="themes"
       @selected="selecteBootswatch"
     />
-    <bootswatch
+    <bwselector
       :themes="themes"
       @selected="selecteBootswatch"
     />
@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import headerbootswatch from '~/components/HeaderBootswatch.vue'
-import bootswatch from '~/components/Bootswatch.vue'
+import bwheadernavbar from '~/components/bootswatch/HeaderNavbar.vue'
+import bwselector from '~/components/bootswatch/Selector.vue'
 import bootstrapexamples from '~/components/Examples.vue'
 import axios from 'axios'
 import $ from 'jquery'
@@ -44,12 +44,13 @@ export default {
     ]
   },
   components: {
-    headerbootswatch,
-    bootswatch,
+    bwheadernavbar,
+    bwselector,
     bootstrapexamples
   },
   methods: {
     selecteBootswatch: function (selectedItem) {
+      console.log(selectedItem)
       for (let theme of this.themes) {
         if (theme.name === selectedItem) {
           // スタイル置き換え

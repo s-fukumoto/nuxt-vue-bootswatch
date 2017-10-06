@@ -38,16 +38,11 @@
 
 <script>
 export default {
-  data () {
-    return {
-      selectedItem: ''
-    }
-  },
   props: ['themes'],
   methods: {
     onClick: function (selectedItem) {
       // 親へイベント通知
-      this.$emit('selected', this.selectedItem)
+      this.$emit('selected', selectedItem)
     }
   }
 }
