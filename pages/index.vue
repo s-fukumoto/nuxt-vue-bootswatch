@@ -1,7 +1,10 @@
 <template>
   <section class="container">
-    <h1>Bootswatch Theme Changer</h1>
-    <bootswatch
+    <bwheadernavbar
+      :themes="themes"
+      @selected="selecteBootswatch"
+    />
+    <bwselector
       :themes="themes"
       @selected="selecteBootswatch"
     />
@@ -11,13 +14,15 @@
 </template>
 
 <script>
-import bootswatch from '~/components/Bootswatch.vue'
+import bwheadernavbar from '~/components/bootswatch/HeaderNavbar.vue'
+import bwselector from '~/components/bootswatch/Selector.vue'
 import bootstrapexamples from '~/components/Examples.vue'
 import axios from 'axios'
+import $ from 'jquery'
 
+const META_TITLE = 'Bootswatch Theme Changer'
 const API_BOOTSWATCH = 'https://bootswatch.com/api/3.json'
 const DEF_BOOTSWATCH_CSS = 'https://maxcdn.bootstrapcdn.com/bootswatch/latest/cerulean/bootstrap.min.css'
-const DEF_JQUERY_JS = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'
 
 export default {
   async asyncData () {
@@ -27,28 +32,30 @@ export default {
       themes: data.themes
     }
   },
+  data () {
+    return {
+      title: META_TITLE
+    }
+  },
   head: {
-    title: 'Bootswatch API Demo',
-    meta: [
-      { charset: 'utf-8' }
-    ],
+    title: META_TITLE, // TODO:dataと同期できたらいいのだが…
     link: [
       { id: 'style-bootswatch', rel: 'stylesheet', href: DEF_BOOTSWATCH_CSS }
-    ],
-    script: [
-      { src: DEF_JQUERY_JS }
     ]
   },
   components: {
-    bootswatch,
+    bwheadernavbar,
+    bwselector,
     bootstrapexamples
   },
   methods: {
     selecteBootswatch: function (selectedItem) {
+      console.log(selectedItem)
       for (let theme of this.themes) {
         if (theme.name === selectedItem) {
           // スタイル置き換え
-          document.getElementById('style-bootswatch').href = theme.cssCdn
+          // document.getElementById('style-bootswatch').href = theme.cssCdn
+          $('#style-bootswatch').attr('href', theme.cssCdn)
           break
         }
       }

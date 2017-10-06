@@ -1,10 +1,10 @@
 <template>
   <div>
-    <label for="select-style">Style選択</label>
+    <label for="select-style">Style Select</label>
     <select
       id="select-style"
       class="form-control"
-      v-model="selected_item"
+      v-model="selectedItem"
       @change="onChange"
     >
       <option v-for="theme in themes" :value="theme.name">
@@ -18,14 +18,14 @@
 export default {
   data () {
     return {
-      selected_item: ''
+      selectedItem: ''
     }
   },
   props: ['themes'],
   methods: {
     onChange: function (e) {
       // 親へイベント通知
-      this.$emit('selected', this.selected_item)
+      this.$emit('selected', this.selectedItem)
     }
   }
 }
