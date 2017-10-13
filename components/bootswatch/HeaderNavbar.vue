@@ -37,12 +37,40 @@
 </template>
 
 <script>
+import axios from 'axios'
+const API_BOOTSWATCH = 'https://bootswatch.com/api/3.json'
+const DEF_BOOTSWATCH_CSS = 'https://maxcdn.bootstrapcdn.com/bootswatch/latest/cerulean/bootstrap.min.css'
+
 export default {
-  props: ['themes'],
+  data () {
+    console.log(`Navbar data!! href=${this.href}`)
+    return {
+      themes: [],
+      href: this.href || DEF_BOOTSWATCH_CSS
+    }
+  },
+  head () {
+    console.log(`Navbar head!! href=${this.href}`)
+    return {
+      link: [
+        { hid: 'style-bootswatch', rel: 'stylesheet', href: this.href }
+      ]
+    }
+  },
+  created () {
+    axios.get(API_BOOTSWATCH)
+      .then(response => {
+        this.themes = response.data.themes
+      })
+  },
   methods: {
     onClick: function (selectedItem) {
-      // 親へイベント通知
-      this.$emit('selected', selectedItem)
+      for (let theme of this.themes) {
+        if (theme.name === selectedItem) {
+          this.href = theme.cssCdn
+          break
+        }
+      }
     }
   }
 }

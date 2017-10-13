@@ -15,17 +15,41 @@
 </template>
 
 <script>
+import axios from 'axios'
+const API_BOOTSWATCH = 'https://bootswatch.com/api/3.json'
+const DEF_BOOTSWATCH_CSS = 'https://maxcdn.bootstrapcdn.com/bootswatch/latest/cerulean/bootstrap.min.css'
+
 export default {
   data () {
+    console.log(`select data!! href=${this.href}`)
     return {
-      selectedItem: ''
+      themes: [],
+      selectedItem: '',
+      href: this.href || DEF_BOOTSWATCH_CSS
     }
   },
-  props: ['themes'],
+  head () {
+    console.log(`select head!! href=${this.href}`)
+    return {
+      link: [
+        { hid: 'style-bootswatch', rel: 'stylesheet', href: this.href }
+      ]
+    }
+  },
+  created () {
+    axios.get(API_BOOTSWATCH)
+      .then(response => {
+        this.themes = response.data.themes
+      })
+  },
   methods: {
-    onChange: function (e) {
-      // 親へイベント通知
-      this.$emit('selected', this.selectedItem)
+    onChange: function () {
+      for (let theme of this.themes) {
+        if (theme.name === this.selectedItem) {
+          this.href = theme.cssCdn
+          break
+        }
+      }
     }
   }
 }
