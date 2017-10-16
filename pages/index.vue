@@ -1,7 +1,7 @@
 <template>
   <section class="container">
     <bwheadernavbar/>
-    <!--<bwselector/>-->
+    <bwselector/>
     <br>
     <bootstrapexamples/>
   </section>

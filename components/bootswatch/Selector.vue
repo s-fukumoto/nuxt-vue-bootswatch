@@ -1,13 +1,13 @@
 <template>
   <div>
-    <label for="select-style">Style Select</label>
+    <label for="select-style">Select Theme</label>
     <select
       id="select-style"
       class="form-control"
       v-model="selectedItem"
       @change="onChange"
     >
-      <option v-for="theme in themes" :value="theme.name">
+      <option v-for="theme in this.$store.state.bootswatch.themes" :value="theme.name">
         {{ theme.name }}
       </option>
     </select>
@@ -15,42 +15,34 @@
 </template>
 
 <script>
-import axios from 'axios'
-const API_BOOTSWATCH = 'https://bootswatch.com/api/3.json'
-const DEF_BOOTSWATCH_CSS = 'https://maxcdn.bootstrapcdn.com/bootswatch/latest/cerulean/bootstrap.min.css'
+import { mapMutations, mapActions } from 'vuex'
 
 export default {
   data () {
-    console.log(`select data!! href=${this.href}`)
     return {
-      themes: [],
-      selectedItem: '',
-      href: this.href || DEF_BOOTSWATCH_CSS
+      selectedItem: this.$store.state.bootswatch.selectedTheme
     }
   },
   head () {
-    console.log(`select head!! href=${this.href}`)
     return {
       link: [
-        { hid: 'style-bootswatch', rel: 'stylesheet', href: this.href }
+        { hid: 'style-bootswatch', rel: 'stylesheet', href: this.$store.state.bootswatch.cssHref }
       ]
     }
   },
   created () {
-    axios.get(API_BOOTSWATCH)
-      .then(response => {
-        this.themes = response.data.themes
-      })
+    this.setThemes()
   },
   methods: {
-    onChange: function () {
-      for (let theme of this.themes) {
-        if (theme.name === this.selectedItem) {
-          this.href = theme.cssCdn
-          break
-        }
-      }
-    }
+    onChange () {
+      this.selectTheme(this.selectedItem)
+    },
+    ...mapMutations({
+      selectTheme: 'bootswatch/selectTheme'
+    }),
+    ...mapActions({
+      setThemes: 'bootswatch/setThemes'
+    })
   }
 }
 </script>

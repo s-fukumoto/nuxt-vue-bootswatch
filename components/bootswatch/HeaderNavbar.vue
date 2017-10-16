@@ -26,7 +26,7 @@
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" aria-labelledby="themes--dropdown">
-              <li v-for="theme in themes"><a href="#" @click="onClick(theme.name)">{{ theme.name }} </a></li>
+              <li v-for="theme in this.$store.state.bootswatch.themes"><a href="#" @click="selectTheme(theme.name)">{{ theme.name }} </a></li>
             </ul>
           </li>
         </ul>
@@ -37,41 +37,26 @@
 </template>
 
 <script>
-import axios from 'axios'
-const API_BOOTSWATCH = 'https://bootswatch.com/api/3.json'
-const DEF_BOOTSWATCH_CSS = 'https://maxcdn.bootstrapcdn.com/bootswatch/latest/cerulean/bootstrap.min.css'
+import { mapMutations, mapActions } from 'vuex'
 
 export default {
-  data () {
-    console.log(`Navbar data!! href=${this.href}`)
-    return {
-      themes: [],
-      href: this.href || DEF_BOOTSWATCH_CSS
-    }
-  },
   head () {
-    console.log(`Navbar head!! href=${this.href}`)
     return {
       link: [
-        { hid: 'style-bootswatch', rel: 'stylesheet', href: this.href }
+        { hid: 'style-bootswatch', rel: 'stylesheet', href: this.$store.state.bootswatch.cssHref }
       ]
     }
   },
   created () {
-    axios.get(API_BOOTSWATCH)
-      .then(response => {
-        this.themes = response.data.themes
-      })
+    this.setThemes()
   },
   methods: {
-    onClick: function (selectedItem) {
-      for (let theme of this.themes) {
-        if (theme.name === selectedItem) {
-          this.href = theme.cssCdn
-          break
-        }
-      }
-    }
+    ...mapMutations({
+      selectTheme: 'bootswatch/selectTheme'
+    }),
+    ...mapActions({
+      setThemes: 'bootswatch/setThemes'
+    })
   }
 }
 </script>
