@@ -1,22 +1,17 @@
-<!--
-  https://bootswatch.com/
--->
-
+<!-- https://bootswatch.com/ -->
 <template>
-
-<div class="container">
-  <expnavbar/>
-  <expbuttons/>
-  <exptypography/>
-  <exptables/>
-  <expforms/>
-  <expnavs/>
-  <expindicators/>
-  <expprogressbars/>
-  <expcontainers/>
-  <expdialogs/>
-</div>
-
+  <div class="container">
+    <expnavbar/>
+    <expbuttons/>
+    <exptypography/>
+    <exptables/>
+    <expforms/>
+    <expnavs/>
+    <expindicators/>
+    <expprogressbars/>
+    <expcontainers/>
+    <expdialogs/>
+  </div>
 </template>
 
 <script>
