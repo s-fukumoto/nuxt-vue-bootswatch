@@ -5,13 +5,13 @@
 </template>
 
 <script>
-import examples from '~/components/bootswatch/examples/All.vue'
+import examples from '~/components/bv/examples/All.vue'
 
 export default {
   head: {
-    title: 'Bootswatch Theme Changer'
+    title: 'Bootstrap-vue compornents'
   },
-  layout: 'bootswatch',
+  layout: 'bv',
   components: {
     examples
   }

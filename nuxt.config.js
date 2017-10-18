@@ -35,11 +35,6 @@ module.exports = {
         'window.jQuery': 'jquery'
       })
     ],
-    modules: [
-      // bootstrap
-      ['@nuxtjs/bootstrap-vue']
-      // ['@nuxtjs/bootstrap-vue', { css: false }]
-    ],
     /*
     ** Run ESLint on save
     */
@@ -53,5 +48,10 @@ module.exports = {
         })
       }
     }
-  }
+  },
+  modules: [
+    // bootstrap
+    '@nuxtjs/bootstrap-vue'
+    // ['@nuxtjs/bootstrap-vue', { css: false }]
+  ]
 }
