@@ -3,14 +3,14 @@
     <bwheadernavbar/>
     <bwselector/>
     <br>
-    <bootstrapexamples/>
+    <bootswatchexamples/>
   </section>
 </template>
 
 <script>
 import bwheadernavbar from '~/components/bootswatch/HeaderNavbar.vue'
 import bwselector from '~/components/bootswatch/Selector.vue'
-import bootstrapexamples from '~/components/Examples.vue'
+import bootswatchexamples from '~/components/bootswatch/examples/All.vue'
 
 export default {
   head: {
@@ -19,7 +19,7 @@ export default {
   components: {
     bwheadernavbar,
     bwselector,
-    bootstrapexamples
+    bootswatchexamples
   }
 }
 </script>
