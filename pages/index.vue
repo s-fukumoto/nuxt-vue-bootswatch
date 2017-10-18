@@ -1,25 +1,19 @@
 <template>
   <section class="container">
-    <bwheadernavbar/>
-    <bwselector/>
-    <br>
-    <bootswatchexamples/>
+    <examples/>
   </section>
 </template>
 
 <script>
-import bwheadernavbar from '~/components/bootswatch/HeaderNavbar.vue'
-import bwselector from '~/components/bootswatch/Selector.vue'
-import bootswatchexamples from '~/components/bootswatch/examples/All.vue'
+import examples from '~/components/bootswatch/examples/All.vue'
 
 export default {
   head: {
     title: 'Bootswatch Theme Changer'
   },
+  layout: 'bootswatch',
   components: {
-    bwheadernavbar,
-    bwselector,
-    bootswatchexamples
+    examples
   }
 }
 </script>
