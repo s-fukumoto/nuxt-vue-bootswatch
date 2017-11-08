@@ -23,16 +23,14 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    /*
-    ** 追加分
-    */
-    vendor: ['axios', 'jquery', 'bootstrap', 'bootstrap-vue'],
+    vendor: ['axios', 'jquery', 'popper.js', 'bootstrap', 'bootstrap-vue'],
     plugins: [
       // set shortcuts as global for bootstrap
       new webpack.ProvidePlugin({
         $: 'jquery',
         jQuery: 'jquery',
-        'window.jQuery': 'jquery'
+        'window.jQuery': 'jquery',
+        Popper: ['popper.js', 'default']
       })
     ],
     /*
@@ -51,7 +49,7 @@ module.exports = {
   },
   modules: [
     // bootstrap
-    '@nuxtjs/bootstrap-vue'
-    // ['@nuxtjs/bootstrap-vue', { css: false }]
+    'bootstrap-vue/nuxt'
+    // ['bootstrap-vue/nuxt', { css: false }]
   ]
 }

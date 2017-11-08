@@ -1,18 +1,18 @@
 <template>
   <div>
     <header>
-      <bvnavbar/>
+      <bv-navbar/>
     </header>
     <nuxt/>
   </div>
 </template>
 
 <script>
-import bvnavbar from '~/components/bv/Navbar.vue'
+import BvNavbar from '~/components/bootstrap/Navbar.vue'
 
 export default {
   components: {
-    bvnavbar
+    BvNavbar
   }
 }
 </script>
@@ -20,7 +20,6 @@ export default {
 <style>
 header {
   width: 100%;
-  position: fixed;
   z-index: 1;
   transition: all 0.5s ease-in-out;
 }

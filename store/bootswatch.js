@@ -1,6 +1,6 @@
 import axios from 'axios'
-const API_BOOTSWATCH = 'https://bootswatch.com/api/3.json'
-const DEF_BOOTSWATCH_CSS = 'https://maxcdn.bootstrapcdn.com/bootswatch/latest/cerulean/bootstrap.min.css'
+const API_BOOTSWATCH = 'https://bootswatch.com/api/4.json'
+const DEF_BOOTSWATCH_CSS = 'https://bootswatch.com/4/cerulean/bootstrap.min.css'
 
 export const state = () => ({
   themes: [],
@@ -16,7 +16,7 @@ export const mutations = {
     state.selectedTheme = selectedTheme
     for (let theme of state.themes) {
       if (theme.name === selectedTheme) {
-        state.cssHref = theme.cssCdn
+        state.cssHref = theme.cssMin
         break
       }
     }

@@ -1,11 +1,11 @@
 <template>
   <section class="container">
-    <examples/>
+    <bw-examples/>
   </section>
 </template>
 
 <script>
-import examples from '~/components/bootswatch/examples/All.vue'
+import BwExamples from '~/components/bootswatch/examples/All.vue'
 
 export default {
   head: {
@@ -13,7 +13,7 @@ export default {
   },
   layout: 'bootswatch',
   components: {
-    examples
+    BwExamples
   }
 }
 </script>

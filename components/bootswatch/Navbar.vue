@@ -1,36 +1,28 @@
 <template>
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">Theme Changer</a>
-      </div>
-
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-        <ul class="nav navbar-nav navbar-right">
-          <li>
-            <a href="/bv">Bootstrap-vue</a>
-          </li>
-          <li>
-            <form class="navbar-form" role="search">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
-              </div>
-              <button type="submit" class="btn btn-default">Submit</button>
-            </form>
-          </li>
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes--dropdown" aria-haspopup="true" aria-expanded="false">
-              Themes
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="themes--dropdown">
-              <li v-for="theme in this.$store.state.bootswatch.themes"><a href="#" @click="selectTheme(theme.name)">{{ theme.name }} </a></li>
-            </ul>
+  <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+    <div class="container">
+      <a href="#" class="navbar-brand">Theme Changer</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="themes" aria-expanded="false">Themes <span class="caret"></span></a>
+            <div class="dropdown-menu" aria-labelledby="themes">
+              <a v-for="theme in this.$store.state.bootswatch.themes" class="dropdown-item" href="#" @click="selectTheme(theme.name)">{{ theme.name }} </a>
+            </div>
           </li>
         </ul>
+        <ul class="nav navbar-nav ml-auto">
+          <li class="nav-item">
+            <nuxt-link to="/bv" nav-link>Go Bootstrap</nuxt-link>
+          </li>
+        </ul>
+
       </div>
     </div>
-  </nav>
+  </div>
 </template>
 
 <script>
