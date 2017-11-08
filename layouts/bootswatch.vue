@@ -1,20 +1,20 @@
 <template>
   <div>
     <header>
-      <bwnavbar/>
+      <bw-navbar/>
     </header>
     <nuxt/>
   </div>
 </template>
 
 <script>
-import bwnavbar from '~/components/bootswatch/Navbar.vue'
-import bwselector from '~/components/bootswatch/Selector.vue'
+import BwNavbar from '~/components/bootswatch/Navbar.vue'
+import BwSelector from '~/components/bootswatch/Selector.vue'
 
 export default {
   components: {
-    bwnavbar,
-    bwselector
+    BwNavbar,
+    BwSelector
   }
 }
 </script>
@@ -38,7 +38,6 @@ html {
 
 header {
   width: 100%;
-  position: fixed;
   z-index: 1;
   transition: all 0.5s ease-in-out;
 }

@@ -1,19 +1,19 @@
 <template>
   <section class="container">
-    <examples/>
+    <bv-examples/>
   </section>
 </template>
 
 <script>
-import examples from '~/components/bv/examples/All.vue'
+import BvExamples from '~/components/bootstrap/examples/All.vue'
 
 export default {
   head: {
     title: 'Bootstrap-vue compornents'
   },
-  layout: 'bv',
+  layout: 'bootstrap',
   components: {
-    examples
+    BvExamples
   }
 }
 </script>
