@@ -47,9 +47,13 @@ module.exports = {
       }
     }
   },
+  css: [
+    // Bootstrap Custumize
+    '~/assets/scss/custom/bootstrap.scss'
+  ],
   modules: [
-    // bootstrap
-    'bootstrap-vue/nuxt'
-    // ['bootstrap-vue/nuxt', { css: false }]
+    // bootstrap-vue
+    // 'bootstrap-vue/nuxt'
+    ['bootstrap-vue/nuxt', { css: false }]
   ]
 }
