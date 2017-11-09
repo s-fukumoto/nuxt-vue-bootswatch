@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <bv-base title="Alert">
+
     <b-alert show>Default Alert</b-alert>
 
     <b-alert variant="success" show>Success Alert</b-alert>
@@ -14,7 +15,7 @@
     <b-alert :show="dismissCountDown"
              dismissible
              variant="warning"
-             @dismissed="dismissCountdown=0"
+             @dismissed="dismissCountDown=0"
              @dismiss-count-down="countDownChanged">
       <p>This alert will dismiss after {{dismissCountDown}} seconds...</p>
       <b-progress variant="warning"
@@ -30,11 +31,17 @@
     <b-btn @click="showDismissibleAlert=true" variant="info" class="m-1">
       Show dismissible alert ({{showDismissibleAlert?'visible':'hidden'}})
     </b-btn>
-  </div>
+
+  </bv-base>
 </template>
 
 <script>
+import BvBase from './_Base.vue'
+
 export default {
+  components: {
+    BvBase
+  },
   data () {
     return {
       dismissSecs: 10,
