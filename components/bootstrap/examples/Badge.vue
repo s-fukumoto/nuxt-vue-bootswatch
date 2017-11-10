@@ -1,7 +1,7 @@
 <template>
   <bv-base title="Badge">
 
-    <h2>Example heading <b-badge>New</b-badge></h2>
+    <h2>あいうえおExample heading <b-badge>New</b-badge></h2>
     <h3>Example heading <b-badge>New</b-badge></h3>
     <h4>Example heading <b-badge>New</b-badge></h4>
     <h5>Example heading <b-badge>New</b-badge></h5>
