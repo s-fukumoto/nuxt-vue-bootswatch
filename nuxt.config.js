@@ -23,6 +23,7 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    // jquery,popper.js,bootstrapは、bootswatch用
     vendor: ['axios', 'jquery', 'popper.js', 'bootstrap', 'bootstrap-vue'],
     plugins: [
       // set shortcuts as global for bootstrap
@@ -47,6 +48,7 @@ module.exports = {
       }
     }
   },
+  // bootstrap-vueで、bootstrapをカスタマイズする用
   css: [
     // Bootstrap Custumize
     '~/assets/scss/custom/bootstrap.scss'
